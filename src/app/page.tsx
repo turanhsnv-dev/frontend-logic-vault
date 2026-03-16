@@ -23,7 +23,6 @@ export default function Home() {
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
             Algorithm Vault
           </h1>
-          <p className="text-neutral-400 text-lg">Day 1: Intelligent Fuzzy Search Engine</p>
         </div>
         
         <div className="relative group">

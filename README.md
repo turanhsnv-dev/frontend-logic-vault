@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+Intelligent Search Engine & Algorithms
+Bu layihədə standart bir axtarış (filter) funksionallığı əvəzinə, performans və istifadəçi təcrübəsini (UX) maksimuma çatdıran 3 fərqli alqoritm tətbiq edilmişdir.
+
+1. Deep Nested Search (Dərin Obyekt Axtarışı)
+Məqsəd: Çox səviyyəli JSON dataları daxilində (user.metadata.city kimi) dinamik və qırılmayan bir axtarış etmək.
+
+Məntiq: split('.') və reduce metodlarından istifadə edərək, string olaraq verilən path-in (yolun) ən dərinliyinə qədər obyektin içinə giririk. Beləliklə, məlumatın harada olmasından asılı olmayaraq O(n * m) mürəkkəbliyində, lakin useMemo ilə optimallaşdırılmış şəkildə dəqiq nəticə alırıq.
+
+2. Levenshtein Distance (Fuzzy Search / Xəta Toleranslı Axtarış)
+Məqsəd: İstifadəçi axtarış zamanı hərf səhvi etdikdə ("Baku" yerinə "Bkau" yazdıqda) ən yaxın uyğunluğu tapıb "Bunu mu demək istədiniz?" təklifini vermək (Google Search məntiqi).
+
+Məntiq: İki string arasındakı riyazi fərqi (hərf əlavə etmə, silmə və ya dəyişdirmə sayını) hesablayan 2D matris yaradırıq. Əgər axtarılan söz tapılmazsa, databazadakı sözlərlə arasındakı Levenshtein məsafəsi 2 və daha az olan ən ideal sözü istifadəçiyə təklif edirik.
+
+3. Debounce Optimization (Sıçrama Önleyici Ləngitmə)
+Məqsəd: Klaviaturada hər hərf yazıldıqda ağır axtarış alqoritmlərinin (və ya gələcəkdə API sorğularının) dəfələrlə işləyərək sistemi və UI-ı dondurmasının qarşısını almaq.
+
+Məntiq: React-in useEffect və setTimeout / clearTimeout funksiyaları ilə xüsusi bir Hook (useDebounce) yazılmışdır. İstifadəçi yazmağa davam etdikcə əvvəlki əmrlər ləğv edilir. Yalnız istifadəçi yazmağı dayandırdıqdan müəyyən müddət sonra (məsələn, 300ms) axtarış alqoritmi yalnız 1 dəfə işə düşür.
