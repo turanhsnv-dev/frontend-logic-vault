@@ -17,8 +17,8 @@ export default function Home() {
   });
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-100 p-6 md:p-12 font-sans selection:bg-indigo-500/30">
-      <div className="max-w-3xl mx-auto space-y-8">
+    <main className="min-h-screen bg-neutral-950 text-neutral-100 p-[20px] font-sans selection:bg-indigo-500/30">
+      <div className="w-full space-y-8">
         <div className="space-y-2">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
             Algorithm Vault
@@ -61,7 +61,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 w-full">
           {results.map((user) => (
             <div 
               key={user.id} 
